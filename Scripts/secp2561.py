@@ -17,7 +17,7 @@ outputFile.write("Public Key gen UE(us)" + ',')
 outputFile.write("Shared Key gen UE(us)" + ',')
 outputFile.write("Shared Key gen CN(us)" + ',' + '\n')
 
-numSamples = 1
+numSamples = 100000
 i = 0
 t_start = time.perf_counter()
 
