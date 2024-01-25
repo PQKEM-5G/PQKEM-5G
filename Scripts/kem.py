@@ -23,12 +23,12 @@ kems = oqs.get_enabled_kem_mechanisms()
 kemalg = "Kyber512"
 
 
-outputFile = open('key_generation_Kyber.csv', 'w')
+outputFile = open('Kyber512_MiniPC.csv', 'w')
 outputFile.write("Public Key gen UE(us)" + ',')
 outputFile.write("Shared Key gen UE(us)" + ',')
 outputFile.write("Shared Key gen CN(us)" + ',' + '\n')
 
-numSamples = 1
+numSamples = 100000
 i = 0
 t_start = time.perf_counter()
 
@@ -50,9 +50,9 @@ for i in range(numSamples):
     #print("Shared secret size: "+str(len(shared_secret_ue)))
     t4 = time.perf_counter()
     duration = (t4 - t3) * 1000000
-    outputFile.write(str(duration)+ ',')
+    outputFile.write(str(duration)+ ','+'\n')
     
-
+'''
     t5 = time.perf_counter()
     shared_secret_cn = cn.decap_secret(ciphertext)
     t6 = time.perf_counter()
@@ -60,7 +60,7 @@ for i in range(numSamples):
     outputFile.write(str(duration)+ ','+'\n')
     print("Success")
 
-
+'''
 #print(ciphertext)
 #print("************\n")
 #print(shared_secret_ue)

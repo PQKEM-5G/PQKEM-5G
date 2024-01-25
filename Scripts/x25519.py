@@ -7,13 +7,13 @@ from cryptography.hazmat.primitives.kdf.x963kdf import X963KDF
 import time
 
 
-outputFile = open('x25519.csv', 'w')
+outputFile = open('x25519_MiniPC.csv', 'w')
 outputFile.write("Public Key gen UE(us)" + ',')
 outputFile.write("Shared Key gen UE(us)" + ',')
 outputFile.write("Shared Key gen CN(us)" + ',' + '\n')
 
 
-numSamples = 1
+numSamples = 100000
 i = 0
 t_start = time.perf_counter()
 
@@ -34,14 +34,15 @@ for i in range(numSamples):
     shared_key = private_key_ue.exchange(public_key_cn)
     t4 = time.perf_counter()
     duration = (t4 - t3) * 1000000
-    outputFile.write(str(duration)+ ',')
+    outputFile.write(str(duration)+ ','+'\n')
 
+'''
     t5 = time.perf_counter()
     shared_key = private_key_cn.exchange(public_key_ue)
     t6 = time.perf_counter()
     duration = (t6 - t5) * 1000000
     outputFile.write(str(duration)+ ',' +'\n')
-
+'''
 print(len(str(public_key_ue)))
 '''
 derived_key = HKDF(

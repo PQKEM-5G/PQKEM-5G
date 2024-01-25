@@ -12,12 +12,12 @@ from cryptography.hazmat.primitives.asymmetric import ec
 import time
 
 
-outputFile = open('secp2561.csv', 'w')
+outputFile = open('secp256_MiniPC.csv', 'w')
 outputFile.write("Public Key gen UE(us)" + ',')
 outputFile.write("Shared Key gen UE(us)" + ',')
 outputFile.write("Shared Key gen CN(us)" + ',' + '\n')
 
-numSamples = 1
+numSamples = 100000
 i = 0
 t_start = time.perf_counter()
 
@@ -42,9 +42,9 @@ for i in range(numSamples):
 
     t4 = time.perf_counter()
     duration = (t4 - t3) * 1000000
-    outputFile.write(str(duration)+ ',')
+    outputFile.write(str(duration)+ ',' +'\n')
 
-
+'''
     t5 = time.perf_counter()
 
     shared_key = private_key_cn.exchange(ec.ECDH(),public_key_ue)
@@ -53,7 +53,7 @@ for i in range(numSamples):
     duration = (t6 - t5) * 1000000
     outputFile.write(str(duration)+ ',' +'\n')
     print("success")
-
+'''
 print(len(str(public_key_ue)))
 
 '''
